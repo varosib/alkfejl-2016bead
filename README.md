@@ -25,6 +25,7 @@ Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára n
   -	diák: tárgyfelvétel, lejelentkezés
 
 <b>Használati esetek</b>
+![hasznalati_esetek](https://cloud.githubusercontent.com/assets/14218102/19416852/036f60a6-939c-11e6-99bf-93b50e40b346.png)
 
 <b>Oldaltérkép</b><br>
 Publikus:
@@ -57,7 +58,10 @@ Diák:
 -	POST /addSubject: új tantárgy felvétel adatok felküldése
 
 <b>Oldalvázlatok</b>
-<br>Főoldal
+<br>Főoldal<br>
+![untitled_page](https://cloud.githubusercontent.com/assets/14218102/19416857/1ad63102-939c-11e6-8493-9938f34c8cf7.jpg)
 <br>Tartalommal rendelkező oldal
+![untitled_page_2](https://cloud.githubusercontent.com/assets/14218102/19416859/20c0e1d4-939c-11e6-920a-56fc51c57559.jpg)
 
-<b>Adatmodell</b>
+<b>Adatmodell</b><br>
+![adatmodell](https://cloud.githubusercontent.com/assets/14218102/19416854/11166632-939c-11e6-96df-775d438c4869.png)
