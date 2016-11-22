@@ -29,7 +29,11 @@
       <select class="form-control" id="list" name="list">
         {% for check in checks %}
             {% if (check.user_id == currentUser.id) %}
-                <option value="{{ check.id }}">{{ check.id }}</option>
+                {% for subject in subjects %}
+                    {% if (check.subject_id == subject.id) %}
+                        <option value="{{ check.id }}">{{ subject.code }} {{ subject.name }} {{ subject.time }} {{ subject.location }}</option>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         {% endfor %}
       </select>

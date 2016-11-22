@@ -154,16 +154,31 @@ class SubjectController {
   * take (request, response){
     const data = request.except('_csrf');
     const check = yield Check.create(data)
-    response.redirect('/subjects')
+    response.redirect('/subjects/mysubjects')
   }
 
   * mySubjects(request, response){
     const checks = yield Check.all()
+    const subjects = yield Subject.all()
     yield response.sendView('mySubjects', {
+      subjects: subjects.toJSON(),
       checks: checks.toJSON()
     });
   }
 
+  * leave (request, response){
+    const data = request.except('_csrf');
+    const id = data.list;
+    const check = yield Check.find(id)
+
+    if (request.currentUser.id !== check.user_id) {
+      response.unauthorized('Access denied.')
+      return
+    }
+
+    yield check.delete()
+    response.redirect('/subjects/mysubjects')
+  }
 }
 
 module.exports = SubjectController
