@@ -11,8 +11,8 @@ Route.get('/subjects/:id/delete', 'SubjectController.doDelete').middleware('auth
 Route.get('/subjects/:id', 'SubjectController.show')
 Route.get('/subjects', 'SubjectController.search').middleware('auth')
 
-Route.get('/register', 'UserController.register')
+//Route.get('/register', 'UserController.register')
 Route.get('/login', 'UserController.login')
-Route.post('/register', 'UserController.doRegister')
+//Route.post('/register', 'UserController.doRegister')
 Route.post('/login', 'UserController.doLogin')
 Route.get('/logout', 'UserController.doLogout')

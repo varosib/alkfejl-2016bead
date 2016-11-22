@@ -32,11 +32,13 @@
           <select class="form-control" id="inputCreatedBy" name="createdBy">
             <option value="">--</option>
             {% for user in users %}
-            {% if filters.createdBy == user.id %}
-            <option value="{{ user.id }}" selected>{{ user.lastname }} {{ user.firstname }}</option>
-            {% else %}
-            <option value="{{ user.id }}">{{ user.lastname }} {{ user.firstname }}</option>
-            {% endif %}
+            {% if user.role == '1' %}
+              {% if filters.createdBy == user.id %}
+              <option value="{{ user.id }}" selected>{{ user.lastname }} {{ user.firstname }}</option>
+              {% else %}
+              <option value="{{ user.id }}">{{ user.lastname }} {{ user.firstname }}</option>
+              {% endif %}
+            {% endif %}  
             {% endfor %}
           </select>
         </div>

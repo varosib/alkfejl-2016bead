@@ -33,7 +33,12 @@
           <ul class="nav navbar-nav">
               {% if currentUser %}
               <li><a href="/subjects">Tárgyak böngészése</a></li>
-              <li><a href="/subjects/create">Tárgy meghirdetése</a></li>
+                {% if currentUser.role == '1' %}
+                <li><a href="/subjects/create">Tárgy meghirdetése</a></li>
+                {% endif %}
+                {% if currentUser.role == '0' %}
+                <li><a href="/subjects/mysubjects">Felvett tárgyaim</a></li>
+                {% endif %}
               {% endif %}
           </ul>
           
