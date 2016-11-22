@@ -2,10 +2,9 @@
 
 const Schema = use('Schema')
 
-class CheckSchema extends Schema {
+class ChecksSchema extends Schema {
 
   up () {
-    this.drop('check')
     this.create('checks', (table) => {
       table.increments()
       table.integer('user_id').unsigned().references('id').inTable('users')
@@ -15,9 +14,9 @@ class CheckSchema extends Schema {
   }
 
   down () {
-    this.drop('check')
+    this.drop('checks')
   }
 
 }
 
-module.exports = CheckSchema
+module.exports = ChecksSchema

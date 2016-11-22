@@ -3,6 +3,8 @@
 const Route = use('Route')
 
 Route.get('/', 'SubjectController.index')
+Route.get('/subjects/mysubjects', 'SubjectController.mySubjects').middleware('auth')
+Route.post('/subjects/take', 'SubjectController.take').middleware('auth')
 Route.get('/subjects/create', 'SubjectController.create').middleware('auth')
 Route.post('/subjects/create', 'SubjectController.doCreate').middleware('auth')
 Route.get('/subjects/:id/edit', 'SubjectController.edit').middleware('auth')

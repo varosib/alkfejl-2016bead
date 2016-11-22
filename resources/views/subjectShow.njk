@@ -21,4 +21,17 @@
 </a>
 {% endif %}
 
+{% if ( currentUser.role == '0') %}
+<form class="form-horizontal" method="post" action="/subjects/take">
+{{ csrfField }}
+<div class="form-group">
+    <div class="col-lg-10">
+        <input type="hidden" class="form-control" id="user_id" name="user_id" placeholder="Tantárgy neve" value="{{ currentUser.id }}">
+        <input type="hidden" class="form-control" id="subject_id" name="subject_id" placeholder="Tantárgy neve" value="{{ subject.id }}">
+        <button type="submit" class="btn btn-primary"> Felvétel </button>
+    </div>
+</div>
+</form>
+{% endif %}
+
 {% endblock %}

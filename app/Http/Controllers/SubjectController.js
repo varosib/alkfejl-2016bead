@@ -1,10 +1,9 @@
 'use strict'
 
 const Database = use('Database')
-const Category = use('App/Model/Category')
 const Department = use('App/Model/Department')
-const Recipe = use('App/Model/Recipe')
 const Subject = use('App/Model/Subject')
+const Check = use('App/Model/Check')
 const User = use('App/Model/User')
 const Validator = use('Validator')
 
@@ -150,6 +149,19 @@ class SubjectController {
       users: users.toJSON(),
       filters
     })
+  }
+
+  * take (request, response){
+    const data = request.except('_csrf');
+    const check = yield Check.create(data)
+    response.redirect('/subjects')
+  }
+
+  * mySubjects(request, response){
+    const checks = yield Check.all()
+    yield response.sendView('mySubjects', {
+      checks: checks.toJSON()
+    });
   }
 
 }
