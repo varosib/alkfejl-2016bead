@@ -45,38 +45,38 @@ class SubjectController {
 
     subjectData.user_id = request.currentUser.id
     const subject = yield Subject.create(subjectData)
-    response.redirect('/')
+    response.redirect('/subjects')
   }
 
   * edit (request, response) {
-    const categories = yield Category.all()
+    const departments = yield Department.all()
     const id = request.param('id');
-    const recipe = yield Recipe.find(id);
-    // console.log(recipe.toJSON())
+    const subject = yield Subject.find(id);
 
-    if (request.currentUser.id !== recipe.user_id) {
+    if (request.currentUser.id !== subject.user_id) {
       response.unauthorized('Access denied.')
       return
     }
 
 
-    yield response.sendView('recipeEdit', {
-      categories: categories.toJSON(),
-      recipe: recipe.toJSON()
+    yield response.sendView('subjectEdit', {
+      departments: departments.toJSON(),
+      subject: subject.toJSON()
     });
   }
 
   * doEdit (request, response) {
-    const recipeData = request.except('_csrf');
+    const subjectData = request.except('_csrf');
 
     const rules = {
+      code: 'required',
       name: 'required',
-      ingredients: 'required',
-      instructions: 'required',
-      category_id: 'required'
+      time: 'required',
+      location: 'required',
+      department_id: 'required'
     };
 
-    const validation = yield Validator.validateAll(recipeData, rules)
+    const validation = yield Validator.validateAll(subjectData, rules)
 
     if (validation.fails()) {
       yield request
@@ -88,24 +88,23 @@ class SubjectController {
     }
 
     const id = request.param('id');
-    const recipe = yield Recipe.find(id);
-
-    // Object.assign(recipe, recipeData)
+    const subject = yield Subject.find(id);
     
-    recipe.name = recipeData.name;
-    recipe.ingredients = recipeData.ingredients; 
-    recipe.instructions = recipeData.instructions;
-    recipe.category_id = recipeData.category_id;
+    subject.code = subjectData.code;
+    subject.name = subjectData.name;
+    subject.time = subjectData.time;
+    subject.location = subjectData.location;
+    subject.category_id = subjectData.category_id;
 
-    yield recipe.save()
+    yield subject.save()
     
-    response.redirect('/')
+    response.redirect('/subjects')
   }
 
   * show (request, response) {
     const id = request.param('id');
     const subject = yield Subject.find(id);
-    yield subject.related('subject').load();
+    yield subject.related('department').load();
 
     yield response.sendView('subjectShow', {
       subject: subject.toJSON()
@@ -114,15 +113,15 @@ class SubjectController {
 
   * doDelete (request, response) {
     const id = request.param('id');
-    const recipe = yield Recipe.find(id);
+    const subject = yield Subject.find(id);
 
-    if (request.currentUser.id !== recipe.user_id) {
+    if (request.currentUser.id !== subject.user_id) {
       response.unauthorized('Access denied.')
       return
     }
 
-    yield recipe.delete()
-    response.redirect('/')
+    yield subject.delete()
+    response.redirect('/subjects')
   }
 
   * search (request, response) {
