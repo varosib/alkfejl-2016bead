@@ -1,0 +1,86 @@
+{% extends "layout" %}
+
+{% block title %}Tárgyak böngészése{% endblock %}
+{% block content %}
+  <h1>Tárgyak böngészése</h1>
+  <form action="/subjects" method="GET">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="inputSubjectName">Tárgy neve</label>
+          <input type="text" class="form-control" placeholder="Tárgy neve" id="inputSubjectName" name="subjectName" value="{{ filters.subjectName }}">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="inputDepartment">Szak</label>
+          <select class="form-control" id="inputDepartment" name="department">
+            <option value="">--</option>
+            {% for department in departments %}
+            {% if filters.department == department.id %}
+            <option value="{{ department.id }}" selected>{{ department.name }}</option>
+            {% else %}
+            <option value="{{ department.id }}">{{ department.name }}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="inputCreatedBy">Tanár</label>
+          <select class="form-control" id="inputCreatedBy" name="createdBy">
+            <option value="">--</option>
+            {% for user in users %}
+            {% if filters.createdBy == user.id %}
+            <option value="{{ user.id }}" selected>{{ user.username }}</option>
+            {% else %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-block btn-primary" type="submit">Szűrés</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <h2>Találatok ({{ subjects.total }})</h2>
+  {% for subjectBatch in subjects.data | batch(3) %}
+  <div class="row">
+    {% for subject in subjectBatch %}
+    <div class="col-md-4">
+      <a class="result-item" href="/subjects/{{ subject.id }}">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <strong>{{ subject.name }}</strong><br>
+            tanár: <em>{{ subject.user.username }}</em>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  Nincs a szűrésnek megfelelő tárgy.
+  {% endfor %}
+  {% if subjects.lastPage > 1 %}
+  <div class="text-center">
+    <ul class="pagination">
+      {% for page in range(1, subjects.lastPage + 1) %}
+      {% if page == subjects.currentPage %}
+      <li class="active">
+        <a href="/subjects?p={{ page }}&amp;subjectName={{ filters.subjectName }}&amp;category={{ filters.category }}&amp;createdBy={{ filters.createdBy }}">{{ page }}</a>
+      </li>
+      {% else %}
+      <li><a href="/subjects?p={{ page }}&amp;subjectName={{ filters.subjectName }}&amp;category={{ filters.category }}&amp;createdBy={{ filters.createdBy }}">{{ page }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+{% endblock %}

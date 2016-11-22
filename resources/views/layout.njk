@@ -27,14 +27,15 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">iNagyiFőz</a>
           </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
+              <li><a href="/subjects">Tárgyak böngészése</a></li>
+              <li><a href="/subjects/create">Tárgy meghirdetése</a></li>
               <li><a href="/recipes">Receptek böngészése</a></li>
               {% if currentUser %}
-              <li><a href="/recipe/create">Recept létrehozása</a></li>
+              <li><a href="/recipes/create">Recept létrehozása</a></li>
               {% endif %}
           </ul>
           
