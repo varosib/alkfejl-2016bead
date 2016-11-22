@@ -8,10 +8,6 @@ class User extends Lucid {
     return this.hasMany('App/Model/Token')
   }
 
-  recipes () {
-    return this.hasMany('App/Model/Recipe')
-  }
-
   subjects () {
     return this.hasMany('App/Model/Subject')
   }

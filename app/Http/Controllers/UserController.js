@@ -24,14 +24,14 @@ class UserController {
   }
 
   * doLogin (request, response) {
-    const email = request.input('email')
+    const username = request.input('username')
     const password = request.input('password')
 
     try {
-      const login = yield request.auth.attempt(email, password) 
+      const login = yield request.auth.attempt(username, password) 
 
       if (login) {
-        response.redirect('/')
+        response.redirect('/subjects')
         return
       }
     } 
@@ -74,7 +74,8 @@ class UserController {
 
     user.username = registerData.username;
     user.email = registerData.email;
-    user.password = yield Hash.make(registerData.password) 
+    user.password = yield Hash.make(registerData.password)
+    user.role = '0' 
     yield user.save()
     
     yield request.auth.login(user)
