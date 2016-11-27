@@ -23,7 +23,7 @@ Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára n
   -	tanár: új tárgy felvétele, modosítása, törlése
   -	diák: tárgyfelvétel, lejelentkezés
 
-<b>Használati esetek</b>
+<b>Használati esetek</b><br>
 ![uj_adatmodell](https://cloud.githubusercontent.com/assets/14218102/20648261/3dec0bb8-b4a2-11e6-9f11-6cb0ec9ddf3a.png)
 
 <b>Oldaltérkép</b><br>
@@ -54,7 +54,7 @@ Diák:
 - GET /subjects/:id/edit: tárgy szerkesztése
 - POST /subjects/:id/edit: szerkesztett tárgy felküldése
 - GET /subjects/:id/delete: tárgy törlése
-- GET /subjects/:id: tárgy megtekintése
+- GET /subjects/:id/: tárgy megtekintése
 - GET /subjects: tárgyak közötti keresés
 -	GET /login: bejelentkezés
 -	POST /login: bejelentkezési adatok felküldése
