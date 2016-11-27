@@ -7,7 +7,6 @@ Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára n
 <b>Funkciónális követelmények</b>
 -	Vendég funkciók nincsenek az oldalon
 -	Felhasználóként (tanár és diák) szeretnénk tudni bejeletkezni
--	Felhasználóként szeretnénk módosítani a személyes adatokat
 -	Tanárként szeretnénk új tárgyat felvenni
 -	Tanárként szeretnénk tárgyat módosítani
 -	Tanárként szeretnénk tárgyat törölöni
@@ -20,12 +19,12 @@ Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára n
 
 <b>Szerepkörök</b>
 -	vendég: nincs funkció
--	felhasználó: személyes adatok módosítás, tantárgyak kilistázása
+-	felhasználó: tantárgyak böngészése
   -	tanár: új tárgy felvétele, modosítása, törlése
   -	diák: tárgyfelvétel, lejelentkezés
 
 <b>Használati esetek</b>
-![hasznalati_esetek](https://cloud.githubusercontent.com/assets/14218102/19416852/036f60a6-939c-11e6-99bf-93b50e40b346.png)
+![uj_adatmodell](https://cloud.githubusercontent.com/assets/14218102/20648261/3dec0bb8-b4a2-11e6-9f11-6cb0ec9ddf3a.png)
 
 <b>Oldaltérkép</b><br>
 Publikus:
@@ -33,29 +32,33 @@ Publikus:
 -	Belépés
 
 Felhasználó:
+- Tárgyak böngészése
 -	Kilépés
--	Személyes adatok
-  -	Adatok szerkesztése
   
 Tanár:
--	Tárgy kihirdetés
+-	Tárgy meghirdetés
   -	Módosítás
   -	Törlés
   
 Diák:
 -	Tárgyfelvétel
--	Lejeletkezés
+  -	Lejeletkezés
 
 <b>Végpontok</b>
 -	GET /: főoldal
+- GET /subjects/mysubjects: felvett tárgyak
+- POST /subjects/mysubjects: tárgy leadás
+- POST /subjects/take: tárgy felvétel
+- GET /subjects/create: új tárgy meghirdetés
+- POST /subjects/create: új tárgy adatainak felküldése
+- GET /subjects/:id/edit: tárgy szerkesztése
+- POST /subjects/:id/edit: szerkesztett tárgy felküldése
+- GET /subjects/:id/delete: tárgy törlése
+- GET /subjects/:id: tárgy megtekintése
+- GET /subjects: tárgyak közötti keresés
 -	GET /login: bejelentkezés
 -	POST /login: bejelentkezési adatok felküldése
--	GET /profile: személyes adatok
--	POST /profile: személyes adatok felküldése
--	GET /allSubject: tárgyak kilistázása
--	GET /mySubject: felvett/hozzá tartozó tárgyak kilistázása, módosítása
--	GET /addSubject: új tantárgy felvétel
--	POST /addSubject: új tantárgy felvétel adatok felküldése
+- GET /logout: kijelentkezés
 
 <b>Oldalvázlatok</b>
 <br>Főoldal<br>
