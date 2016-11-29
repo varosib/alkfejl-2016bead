@@ -179,6 +179,26 @@ class SubjectController {
     yield check.delete()
     response.redirect('/subjects/mysubjects')
   }
+
+  * ajaxDelete(request, response) {
+     const id = request.param('id');
+     const subject = yield Subject.find(id);
+
+     if (subject) {
+       if (request.currentUser.id !== subject.user_id) {
+         response.unauthorized('Access denied.')
+         return
+       }
+
+       yield subject.delete()
+       response.ok({
+         success: true
+       })
+       return
+     }
+    
+    response.notFound('No subject')
+  }
 }
 
 module.exports = SubjectController
