@@ -4,8 +4,6 @@
 <b>Feladat</b> <br>
 Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára nincsen semmilyen funkció, az adatok nem publikusak a kívülállok számára. Belépés után meg kell különböztetni a tanár és diák szerepkört. A tanároknak lehetőségük van új tantárgyat felvenni a rendszerbe és a sajátjaikon módosítani, törölni. A diákok pedig felvehetik ezeket a tárgyakat, majd tetszés szerint le is adhatják őket.
 
-teszt
-
 <b>Funkciónális követelmények</b>
 -	Vendég funkciók nincsenek az oldalon
 -	Felhasználóként (tanár és diák) szeretnénk tudni bejeletkezni
