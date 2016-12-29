@@ -214,7 +214,6 @@ class SubjectController {
     const validation = yield Validator.validateAll(subjectData, rules)
 
     if (validation.fails()) {
-      console.log('validation fail!!!')
       response.send({ success: false })
     } else {
       subjectData.user_id = request.currentUser.id

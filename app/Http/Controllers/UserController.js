@@ -131,6 +131,17 @@ class UserController {
       }
     }
   }
+
+  * ajaxLogout(request, response) {
+    try {
+        yield request.auth.logout()
+        response.send({ success: true })
+        return
+      }
+    catch (err) {
+      response.send({ success: false })
+    }
+  }
 }
 
 module.exports = UserController

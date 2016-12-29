@@ -48,7 +48,7 @@
               {% if currentUser %}
                 <li><a href="/profile" id="btnProfile">Adataim</a></li>
                 <li class="navbar-text">Üdv, {{ currentUser.lastname }} {{ currentUser.firstname }}!</li>
-                <li><a href="/logout">Kilépés</a></li>
+                <li><a href="/logout" id="btnLogout">Kilépés</a></li>
               {% else %}
                 <li><a href="/login" id="btnLogin">Belépés</a></li>
               {% endif %}
@@ -69,6 +69,7 @@
     {% block scripts %}
       <script src="/scripts/popup_create.js"></script>
       <script src="/scripts/popup_profile.js"></script>
+      <script src="/scripts/logout.js"></script>
     {% endblock %}
   </body>
 </html>
