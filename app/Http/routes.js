@@ -20,6 +20,7 @@ Route.post('/login', 'UserController.doLogin')
 Route.get('/logout', 'UserController.doLogout')
 
 Route.group('ajax', function () {
+    Route.post('/subjects/create', 'SubjectController.ajaxCreate').middleware('auth')
     Route.delete('/subjects/:id/delete', 'SubjectController.ajaxDelete').middleware('auth')
     Route.post('/profile', 'UserController.ajaxProfile').middleware('auth')
     Route.post('/login', 'UserController.ajaxLogin')

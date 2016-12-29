@@ -36,7 +36,7 @@
                 {% if currentUser %}
                 <li><a href="/subjects">Tárgyak böngészése</a></li>
                   {% if currentUser.role == '1' %}
-                  <li><a href="/subjects/create">Tárgy meghirdetése</a></li>
+                  <li><a href="/subjects/create" id="btnCreate">Tárgy meghirdetése</a></li>
                   {% endif %}
                   {% if currentUser.role == '0' %}
                   <li><a href="/subjects/mysubjects">Felvett tárgyaim</a></li>
@@ -67,6 +67,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% block scripts %}
+      <script src="/scripts/popup_create.js"></script>
       <script src="/scripts/popup_profile.js"></script>
     {% endblock %}
   </body>

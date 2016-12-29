@@ -114,21 +114,21 @@ class UserController {
 
     if (validation.fails()) {
       response.send({ success: false })
-    }
+    } else {
+      const id = request.currentUser.id;
+      const user = yield User.find(id);
 
-    const id = request.currentUser.id;
-    const user = yield User.find(id);
-
-    try {
-      if (user) {
-        user.email = email;
-        yield user.save()
-        response.send({ success: true })
-        return
+      try {
+        if (user) {
+          user.email = email;
+          yield user.save()
+          response.send({ success: true })
+          return
+        }
+      } 
+      catch (err) {
+        response.send({ success: false })
       }
-    } 
-    catch (err) {
-      response.send({ success: false })
     }
   }
 }

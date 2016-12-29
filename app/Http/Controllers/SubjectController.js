@@ -199,6 +199,36 @@ class SubjectController {
     
     response.notFound('No subject')
   }
+
+  * ajaxCreate (request, response) {
+    const subjectData = request.except('_csrf');
+
+    const rules = {
+      code: 'required',
+      name: 'required',
+      time: 'required',
+      location: 'required',
+      department_id: 'required'
+    };
+
+    const validation = yield Validator.validateAll(subjectData, rules)
+
+    if (validation.fails()) {
+      console.log('validation fail!!!')
+      response.send({ success: false })
+    } else {
+      subjectData.user_id = request.currentUser.id
+      
+      try {
+        const subject = yield Subject.create(subjectData)
+        response.send({ success: true })
+        return
+      } 
+      catch (err) {
+        response.send({ success: false })
+      }
+    }
+  }
 }
 
 module.exports = SubjectController
