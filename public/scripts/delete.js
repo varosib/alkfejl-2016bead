@@ -12,10 +12,24 @@ function ajaxDelete(url) {
   )
 }
 
-function my_confirm(str) {
+function delete_confirm(str) {
   let _resolve, _reject
 
-  const $modal = $('.confirm-modal')
+  const $modal = $(`
+    <div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            Biztosan törölni szeretnéd?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success modal-ok" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-danger modal-cancel" data-dismiss="modal">Mégse</button>
+        </div>
+        </div>
+    </div>
+    </div>
+  `)
   $modal.modal('show')
 
   $modal.find('.modal-ok').on('click', function (e) {
@@ -33,7 +47,7 @@ function my_confirm(str) {
 
 $('#btnDelete').on('click', function (e) {
   e.preventDefault()
-  my_confirm('Biztosan törlöd a tárgyat?')
+  delete_confirm('Biztosan törlöd a tárgyat?')
     .then(response => {
       if (response) {
         const url = '/ajax' + $(this).attr('href');

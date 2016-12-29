@@ -2,12 +2,12 @@ $('#btnCreate').on('click', function (e) {
   e.preventDefault()
 
   let $modal = $('.modal')
-  const hasModal = $modal.length
+  //const hasModal = $modal.length
 
-  if (hasModal) {
-    $modal.modal('show')
-    return
-  } else {
+  //if (hasModal) {
+  //  $modal.modal('show')
+  //  return
+  //} else {
     $modal = $(`
       <div class="modal fade confirm-modal" tabindex="-1" role="dialog" id="createModal">
         <div class="modal-dialog modal-md" role="document">
@@ -52,5 +52,5 @@ $('#btnCreate').on('click', function (e) {
         })
       })
     })
-  }
+  //}
 })

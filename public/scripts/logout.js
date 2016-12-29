@@ -12,7 +12,7 @@ function ajaxLogout(url) {
   )
 }
 
-function my_confirm(str) {
+function logout_confirm(str) {
   let _resolve, _reject
 
   $modal = $(`
@@ -47,7 +47,7 @@ function my_confirm(str) {
 
 $('#btnLogout').on('click', function (e) {
   e.preventDefault()
-  my_confirm('Biztosan kilépsz?')
+  logout_confirm('Biztosan kilépsz?')
     .then(response => {
       if (response) {
         const url = '/ajax/logout';

@@ -2,6 +2,9 @@
 
 {% block scripts %}
 <script src="/scripts/delete.js"></script>
+<script src="/scripts/popup_create.js"></script>
+<script src="/scripts/popup_profile.js"></script>
+<script src="/scripts/logout.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -24,21 +27,6 @@
 <a id="btnDelete" href="/subjects/{{ subject.id }}/delete" class="btn btn-danger">
     Töröl
 </a>
-<span class="help-block"></span>
-
-<div class="modal fade confirm-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-        <div class="modal-body">
-            Biztosan törölni szeretnéd?
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-success modal-ok" data-dismiss="modal">OK</button>
-            <button type="button" class="btn btn-danger modal-cancel" data-dismiss="modal">Mégse</button>
-        </div>
-        </div>
-    </div>
-</div>
 
 {% endif %}
 
