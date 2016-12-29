@@ -5,15 +5,6 @@ const User = use('App/Model/User')
 const Hash = use('Hash')
 
 class UserController {
-  * register(request, response) {
-    const isLoggedIn = yield request.auth.check()
-    if (isLoggedIn) {
-      response.redirect('/')
-    }
-
-    yield response.sendView('register')
-  }
-
   * login(request, response) {
     const isLoggedIn = yield request.auth.check()
     if (isLoggedIn) {
@@ -49,17 +40,32 @@ class UserController {
     }
   }
 
-  * doRegister (request, response) {
-    const registerData = request.except('_csrf');
+  * doLogout (request, response) {
+    yield request.auth.logout()
+    response.redirect('/')
+  }
+
+  * profile (request, response) {
+    const id = request.currentUser.id;
+
+    const user = yield User.find(id);
+
+    yield response.sendView('profile', {
+      user: user.toJSON()
+    });
+  }
+
+  * doProfile (request, response) {
+    const data = request.except('_csrf');
 
     const rules = {
-      username: 'required|alpha_numeric|unique:users',
-      email: 'required|email|unique:users',
-      password: 'required|min:4',
-      password_confirm: 'required|same:password',
+      username: 'required',
+      lastname: 'required',
+      firstname: 'required',
+      email: 'required'
     };
 
-    const validation = yield Validator.validateAll(registerData, rules)
+    const validation = yield Validator.validateAll(data, rules)
 
     if (validation.fails()) {
       yield request
@@ -70,22 +76,14 @@ class UserController {
       return
     }
 
-    const user = new User()
+    const id = request.currentUser.id;
+    const user = yield User.find(id);
+    
+    user.email = data.email;
 
-    user.username = registerData.username;
-    user.email = registerData.email;
-    user.password = yield Hash.make(registerData.password)
-    user.role = '0' 
     yield user.save()
     
-    yield request.auth.login(user)
-
-    response.redirect('/')
-  }
-
-  * doLogout (request, response) {
-    yield request.auth.logout()
-    response.redirect('/')
+    response.redirect('/subjects')
   }
 }
 
