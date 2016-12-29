@@ -21,4 +21,5 @@ Route.get('/logout', 'UserController.doLogout')
 
 Route.group('ajax', function () {
     Route.delete('/subjects/:id/delete', 'SubjectController.ajaxDelete').middleware('auth')
+    Route.post('/login', 'UserController.ajaxLogin')
 }).prefix('/ajax')
