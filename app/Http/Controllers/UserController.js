@@ -101,6 +101,36 @@ class UserController {
       response.send({ success: false })
     }
   }
+
+  * ajaxProfile(request, response) {
+    const data = request.except('_csrf');
+    const email = request.input('email')
+
+    const rules = {
+      email: 'required'
+    };
+
+    const validation = yield Validator.validateAll(data, rules)
+
+    if (validation.fails()) {
+      response.send({ success: false })
+    }
+
+    const id = request.currentUser.id;
+    const user = yield User.find(id);
+
+    try {
+      if (user) {
+        user.email = email;
+        yield user.save()
+        response.send({ success: true })
+        return
+      }
+    } 
+    catch (err) {
+      response.send({ success: false })
+    }
+  }
 }
 
 module.exports = UserController
