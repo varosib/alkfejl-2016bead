@@ -7,6 +7,7 @@ Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára n
 <b>Funkciónális követelmények</b>
 -	Vendég funkciók nincsenek az oldalon
 -	Felhasználóként (tanár és diák) szeretnénk tudni bejeletkezni
+- Felhasználóként meg lehet változtatni a személyes adatokat
 -	Tanárként szeretnénk új tárgyat felvenni
 -	Tanárként szeretnénk tárgyat módosítani
 -	Tanárként szeretnénk tárgyat törölöni
@@ -19,12 +20,12 @@ Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára n
 
 <b>Szerepkörök</b>
 -	vendég: nincs funkció
--	felhasználó: tantárgyak böngészése
+-	felhasználó: tantárgyak böngészése, személyes adatok módosítás
   -	tanár: új tárgy felvétele, modosítása, törlése
   -	diák: tárgyfelvétel, lejelentkezés
 
 <b>Használati esetek</b><br>
-![uj_adatmodell](https://cloud.githubusercontent.com/assets/14218102/20648261/3dec0bb8-b4a2-11e6-9f11-6cb0ec9ddf3a.png)
+![hasznalati_esetek](https://cloud.githubusercontent.com/assets/14218102/19416852/036f60a6-939c-11e6-99bf-93b50e40b346.png)
 
 <b>Oldaltérkép</b><br>
 Publikus:
@@ -33,6 +34,7 @@ Publikus:
 
 Felhasználó:
 - Tárgyak böngészése
+- Adataim
 -	Kilépés
   
 Tanár:
@@ -56,9 +58,17 @@ Diák:
 - GET /subjects/:id/delete: tárgy törlése
 - GET /subjects/:id/: tárgy megtekintése
 - GET /subjects: tárgyak közötti keresés
+- GET /profile: személyes adatok megtekintés
+- POST /profile: szerkesztett személyes adatok felküldése
 -	GET /login: bejelentkezés
 -	POST /login: bejelentkezési adatok felküldése
 - GET /logout: kijelentkezés
+
+- POST /ajax/subjects/create: új tárgy hirdetés ajax funkció
+- DELETE /ajax/subjects/:id/delete: tárgy törlés ajax funkció
+- POST /ajax/profile: személyes adatok változtatása ajax funkció
+- POST /ajax/login: bejelentkező ajax funkció
+- GET /ajax/logout: kilépő ajax funkció
 
 <b>Oldalvázlatok</b>
 <br>Főoldal<br>
@@ -68,3 +78,44 @@ Diák:
 
 <b>Adatmodell</b><br>
 ![adatmodell](https://cloud.githubusercontent.com/assets/14218102/19416854/11166632-939c-11e6-96df-775d438c4869.png)
+
+<b>Fejlesztői felhasználók</b>
+- Tanár felhasználónevek: tanar1, tanar2
+- Hallgató felhasználónevek: hallgato1, hallgato2
+- Jelszó mindegyikhez: asd123
+
+<b>Javítások a 2. beadandón</b>
+- Felhasználók szerkeszthetik a személyes adatokat (email címet)
+- Felhasználó fiókok adatainak feltüntetése a dokumentációban
+
+<b>JavaScript funkciók</b>
+Mindegyik funkció AJAX-os funkció lett. A javascriptek nélkül a program továbbra is működő képes.
+- Bejelentkezés:
+  - Funkció leírása: Bejelentkezéskor egy modális ablakba írjuk az adatainkat
+  - Érintett fájlok: UserController.js, routes.js, popup_login.js, layout.njk, main.njk
+  - Folyamat:
+- Kijelentkezés:
+  - Funkció leírása:  Kijelentkezés esetén egy modális ablak megkérdezi, biztosan kijelentkezünk-e
+  - Érintett fájlok: UserController.js, routes.js, logout.js, layout.njk
+  - Folyamat:
+- Új tárgy meghirdetés:
+  - Funkció leírása: Új tárgy meghirdetése egy modális ablakban történik
+  - Érintett fájlok: SubjectController.js, routes.js, popup_create.js, layout.njk
+  - Folyamat:
+- Személyes adatok módosítás:
+  - Funkció leírása: Személyes adatok módosítása egy modális ablakban történik
+  - Érintett fájlok: UserController.js, routes.js, popup_profile.js, layout.njk
+  - Folyamat:
+- Tárgy törlés:
+  - Funkció leírása: Tárgy törlés esetén egy modális ablak megkérdezi, biztosan töröljük-e
+  - Érintett fájlok: SubjectController.js, routes.js, delete.js, layout.njk, subjectShow.njk
+  - Folyamat:
+
+<b>Tesztelés</b>
+Tesztelés Selenium IDE-vel történt meg. Telepítés: https://addons.mozilla.org/hu/firefox/addon/selenium-ide/
+- 1_uj_targy: Bejelentkezik a tanar1 felhasználó, meghirdet egy tárgyat abc_teszt néven, majd kijelentkezik.
+- 2_targy_szerkeszt: Bejelentkezik a tanar1 felhasználó, módosítja az abc_teszt tárgy adatait, majd kijelentkezik.
+- 3_targy_felvetel: Bejelentkezik a hallgato1 felhasználó, felveszi az abc_teszt tárgyat, majd kijelentkezik.
+- 4_targy_lead: Bejelentkezik a hallgato1 felhasználó, leadja az abc_teszt tárgyat, majd kijelentkezik.
+- 5_targy_megszuntetes: Bejelentkezik a tanar1 felhasználó, törli az abc_teszt tárgyat, majd kijelentkezik.
+- teljes_folyamat: test suit (test cases 1-5)
