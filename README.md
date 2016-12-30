@@ -29,11 +29,11 @@ Tanulmányi rendszer készítés, minimális funkciókkal. Vendégek számára n
 
 <b>Oldaltérkép</b><br>
 Publikus:
--	Főoldal
+-	Üdvözlő oldal
 -	Belépés
 
 Felhasználó:
-- Tárgyak böngészése
+- Tárgyak böngészése (Főoldal)
 - Adataim
 -	Kilépés
   
@@ -47,7 +47,7 @@ Diák:
   -	Lejeletkezés
 
 <b>Végpontok</b>
--	GET /: főoldal
+-	GET /: üdvözlő oldal
 - GET /subjects/mysubjects: felvett tárgyak
 - POST /subjects/mysubjects: tárgy leadás
 - POST /subjects/take: tárgy felvétel
@@ -57,7 +57,7 @@ Diák:
 - POST /subjects/:id/edit: szerkesztett tárgy felküldése
 - GET /subjects/:id/delete: tárgy törlése
 - GET /subjects/:id/: tárgy megtekintése
-- GET /subjects: tárgyak közötti keresés
+- GET /subjects: tárgyak közötti keresés (főoldal)
 - GET /profile: személyes adatok megtekintés
 - POST /profile: szerkesztett személyes adatok felküldése
 -	GET /login: bejelentkezés
