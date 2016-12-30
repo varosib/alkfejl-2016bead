@@ -70,16 +70,18 @@ Diák:
 - GET /ajax/logout: kilépő ajax funkció
 
 <b>Oldalvázlatok</b>
-<br>Főoldal<br>
-![untitled_page](https://cloud.githubusercontent.com/assets/14218102/19416857/1ad63102-939c-11e6-8493-9938f34c8cf7.jpg)
-<br>Tartalommal rendelkező oldal
-![untitled_page_2](https://cloud.githubusercontent.com/assets/14218102/19416859/20c0e1d4-939c-11e6-920a-56fc51c57559.jpg)
+<br>Üdvözlő képernyő<br>
+![udvozlo](https://cloud.githubusercontent.com/assets/14218102/21564154/5d8f1e72-ce8a-11e6-8a5a-52a5d3d91bb8.png)
+<br>Tanár főoldal<br>
+![tanar](https://cloud.githubusercontent.com/assets/14218102/21564161/71d527fa-ce8a-11e6-8da7-8ae5a78d740d.png)
+<br>Hallgató főoldal
+![hallgato](https://cloud.githubusercontent.com/assets/14218102/21564168/8b1d31ee-ce8a-11e6-9a0d-5ff64f5f0635.png)
 
 <b>Adatmodell</b><br>
-![adatmodell](https://cloud.githubusercontent.com/assets/14218102/19416854/11166632-939c-11e6-96df-775d438c4869.png)
+![uj_adatmodell](https://cloud.githubusercontent.com/assets/14218102/21564056/f15dd3d4-ce88-11e6-89cb-f7013d31047f.png)
 
-<b>Felhasználói dokumentáció</b>
-Futtatás követelménye: internet kapcsolat és böngésző megléte, javascript ajánlott.
+<b>Felhasználói dokumentáció</b><br>
+Futtatás követelménye: internet kapcsolat és böngésző megléte, javascript ajánlott.<br>
 Program használata:
 - Üdvözlő oldalon a jobb felső sarokban van a bejelentkezés gomb
 - Bejelentkezés esetén a főoldalra (= tárgyak megtekintése oldal) kerülünk
