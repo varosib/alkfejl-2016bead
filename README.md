@@ -63,7 +63,6 @@ Diák:
 -	GET /login: bejelentkezés
 -	POST /login: bejelentkezési adatok felküldése
 - GET /logout: kijelentkezés
-
 - POST /ajax/subjects/create: új tárgy hirdetés ajax funkció
 - DELETE /ajax/subjects/:id/delete: tárgy törlés ajax funkció
 - POST /ajax/profile: személyes adatok változtatása ajax funkció
@@ -78,6 +77,25 @@ Diák:
 
 <b>Adatmodell</b><br>
 ![adatmodell](https://cloud.githubusercontent.com/assets/14218102/19416854/11166632-939c-11e6-96df-775d438c4869.png)
+
+<b>Felhasználói dokumentáció</b>
+Futtatás követelménye: internet kapcsolat és böngésző megléte, javascript ajánlott.
+Program használata:
+- Üdvözlő oldalon a jobb felső sarokban van a bejelentkezés gomb
+- Bejelentkezés esetén a főoldalra (= tárgyak megtekintése oldal) kerülünk
+- Egy tárgyra kattintava láthatjuk a teljes adatait
+- Jobb felső sarokban lehet kijelentkezni
+- Ettől picit balrább lehet a személyes adatokat megtekinteni/módosítani
+- Bal felső sarokban találjuk a tárgyak megtekintése oldalt
+- Tanárként a bal felső sarokban lehet új tárgyat rögzíteni
+- Tanárként a saját tárgyainkat lehet szerkeszteni/törölni a tárgyak megtekintése oldalon az egyikre kattintva
+- Hallgatóként fel lehet venni egy tárgyat a tárgyak megtekintése oldalon az egyikre kattintva
+- Hallgatóként meg lehet tekinte a felvett tárgyainkat a bal felső sarokban, és ezen az oldalon le is lehet adni
+
+<b>Fejlesztő környezet</b>
+- A fejlesztésre lokális és webes (pl Cloud9) környezetben van lehetőség
+- Ezt a repositoryt kell klónozni (git clone)
+- A megváltoztatott file-okat vissza kell commitálni a github repositoryba
 
 <b>Fejlesztői felhasználók</b>
 - Tanár felhasználónevek: tanar1, tanar2
