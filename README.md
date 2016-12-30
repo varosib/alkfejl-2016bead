@@ -72,9 +72,9 @@ Diák:
 <b>Oldalvázlatok</b>
 <br>Üdvözlő képernyő<br>
 ![udvozlo](https://cloud.githubusercontent.com/assets/14218102/21564154/5d8f1e72-ce8a-11e6-8a5a-52a5d3d91bb8.png)
-<br>Tanár főoldal<br>
+Tanár főoldal<br>
 ![tanar](https://cloud.githubusercontent.com/assets/14218102/21564161/71d527fa-ce8a-11e6-8da7-8ae5a78d740d.png)
-<br>Hallgató főoldal
+Hallgató főoldal<br>
 ![hallgato](https://cloud.githubusercontent.com/assets/14218102/21564168/8b1d31ee-ce8a-11e6-9a0d-5ff64f5f0635.png)
 
 <b>Adatmodell</b><br>
